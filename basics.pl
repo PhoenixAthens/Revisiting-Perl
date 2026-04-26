@@ -19,3 +19,42 @@ print $string,"\n";
 print "An integer type: ",$int," \n";
 print "A float type: ",$float," \n";
 print "A character type: ",$char," \n";
+
+$int_as_hex = 0xff;
+$int_as_bin = 0b1011;
+$int_as_octal = 0123;
+print "Value is ",$int_as_hex,"\n"; # 255
+print "Value is ",$int_as_bin,"\n"; # 11
+print "Value is ",$int_as_octal,"\n"; # 83
+=POD
+Value is 255
+Value is 11
+Value is 83
+=cut
+
+# arrays
+@list_of_integers = (1,2,3,4);
+@list_of_chars = ('a','b','c');
+@mix_values = (1,2,'a','c',"hello",2.34);
+print "Index 0: ", @list_of_chars[0],"\n"; #a
+
+# variable Variables
+$fruitName = "apple";
+$$fruitName = "delicious";
+print "fruitName ",$fruitName,"\n"; # fruitName apple
+print "Taste of ",$fruitName, " is ",$$fruitName," \n"; # Taste of apple is delicious
+
+$fruitQuantity = 5;
+
+#the following code causes a runtime error
+=POD
+$$fruitQuantity = "toomuch"; # Modification of a read-only value attempted at basics.pl
+print "fruitName ",$fruitQuantity,"\n"; # fruitName apple
+print "Taste of ",$fruitQuantity, " is ",$$fruitQuantity," \n"; # Taste of apple is delicious
+=cut
+
+$skyColor = "Blue";
+$varPrefix = "sky";
+print $skyColor,"\n"; #Blue
+
+print ${$varPrefix."Color"}."\n"; #Blue
