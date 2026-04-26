@@ -118,3 +118,40 @@ print $skyColor,"\n"; #Blue
 print ${$varPrefix."Color"}."\n"; #Blue
 ```
 `.` operator is used to concatenate strings, in the above code example the name of the variable is itself an expression and the `.` operator is used to concatenate it with other variable part to get the resule, first `$varPrefix` is evaluated, thus we get "sky", this string is then concatenated with "Color", this gives us `$skyColor`, which returns the value "Blue".
+
+## Operators
+!["Image of operators"](./Assets/Operators.png "Operators")
+
+Two operators to take note of here are `cmp` and `<=>` (the space-ship operator), the `<=>` works only for numeric data types and `cmp` works only with string data type. both return `-1` if the first expression is smaller than the second expression, `1` if the first expression is greater than the second expression and `0` if both expressions are equal
+```perl
+$value1 = 23;
+$value2 = 46;
+print "Result: ".($value1 <=> $value2)."\n"; # -1
+$value1 = 47;
+print "Result: ".($value1 <=> $value2)."\n"; # 1
+$value2 = 47;
+print "Result: ".($value1 <=> $value2)."\n"; # 0
+
+$value1 = "Ak";
+$value2 = "Bc";
+print "Result: ".($value1 cmp $value2)."\n"; # -1
+````
+
+>Thing to note about Logical operators
+In Perl, the `&&` , `||`, and `!` operators have higher precedence than `and`, `or`, and `not` respectively, as evident from the table below:
+
+| Evaluation | Result | Evaluated as |
+| -------- | -------- | -------- |
+| $e = true && false | False | $e = (true && false) |
+| $e = true and false | True | ($e = true) && false |
+
+```perl
+$e = false;
+$e = true && false;
+print "Result: ".$e."\n";
+$e=true and false;
+print "Result: ".$e."\n";
+```
+Because of this, it’s safer to use `&&`, `||`, and `!` instead of `and`, `or`, and `not` respectively.
+
+Even in Perl `++` is a post-increment operator.

@@ -58,3 +58,22 @@ $varPrefix = "sky";
 print $skyColor,"\n"; #Blue
 
 print ${$varPrefix."Color"}."\n"; #Blue
+
+# spaceship operator and `cmp` operator
+$value1 = 23;
+$value2 = 46;
+print "Result: ".($value1 <=> $value2)."\n"; # -1
+$value1 = 47;
+print "Result: ".($value1 <=> $value2)."\n"; # 1
+$value2 = 47;
+print "Result: ".($value1 <=> $value2)."\n"; # 0
+
+$value1 = "Ak";
+$value2 = "Bc";
+print "Result: ".($value1 cmp $value2)."\n"; # -1
+
+$e = false;
+$e = true && false;
+print "Result: ".$e."\n"; #false
+$e=true and false;
+print "Result: ".$e."\n"; #true
