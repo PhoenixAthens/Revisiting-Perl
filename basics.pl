@@ -77,3 +77,29 @@ $e = true && false;
 print "Result: ".$e."\n"; #false
 $e=true and false;
 print "Result: ".$e."\n"; #true
+
+# give-when construct
+#
+# use feature 'switch';
+
+=POD
+$colors = "Red";
+given(colors){
+    when("Orange"){
+        print "You got it!\n"
+    }
+    when("Yellow"){
+        print "Those small men in yellow coats!\n"
+    }
+    when("Green"){
+        print "Now that's some save-earth stuff.\n"
+    }
+    default{
+        print "Opps! No match found \n"
+    }
+}
+=cut
+
+$color2 = "Brown";
+$result = ($color2 eq "yellow")?"hell yeah!\n":"Shite!\n";
+print $result;

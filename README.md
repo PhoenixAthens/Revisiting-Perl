@@ -155,3 +155,55 @@ print "Result: ".$e."\n";
 Because of this, it’s safer to use `&&`, `||`, and `!` instead of `and`, `or`, and `not` respectively.
 
 Even in Perl `++` is a post-increment operator.
+
+## Conditionals
+
+### if-elsif-else
+In Perl, we have `if`, `elsif`, and `else` to implement conditional logic
+
+### given-when
+A construct similar to `switch` statement is `given-when` construct, an expression is placed inside the `given` construct and after that we have a bunch of `when` constructs with constant-expressions and when the expression in `given` evaluates to one of the constants in `when` constructs, the code within the respective `when` block is executed. we also have a `default` block, the code within which runs only if none of the `when` blocks match the expression.
+
+```perl
+$colors = "Red";
+given(colors){
+    when("Orange"){
+        print "You got it!"
+    }
+    when("Yellow"){
+        print "Those small men in yellow coats!"
+    }
+    when("Green"){
+        print "Now that's some save-earth stuff"
+    }
+    default{
+        print "Opps! No match found "
+    }
+}
+```
+However, `given-when` constructs are old way of doing things and deprecated in newer versions of perl, therefore even to use these constructs one has to add the line `use feature 'switch';` to the source code.
+
+Modern `perl-way` of writing switch statements is to use the `if-elsif` as follows
+```perl
+my $colors = "Red";
+if ($colors eq "Orange") {
+    print "You got it!";
+}
+elsif ($colors eq "Yellow") {
+    print "Those small men in yellow coats!";
+}
+elsif ($colors eq "Green") {
+    print "Now that's some save-earth stuff";
+}
+else {
+    print "Opps! No match found";
+}
+```
+
+### ternary operator
+Perl also supports c-style ternary operator
+```perl
+$color2 = "Brown";
+$result = ($color2 eq "yellow")?"hell yeah!\n":"Shite!\n";
+print $result;
+```
