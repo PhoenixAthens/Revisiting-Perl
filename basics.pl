@@ -103,3 +103,24 @@ given(colors){
 $color2 = "Brown";
 $result = ($color2 eq "yellow")?"hell yeah!\n":"Shite!\n";
 print $result;
+
+# loops
+# foreach loop
+
+@items = ('corn','muesli','hotdog','mustard','wheat');
+foreach $item(@items){
+    print $item."\n";
+}
+
+# without loop variable
+print "Without loop variable\n";
+foreach (@items){
+    print "$_\n";
+}
+
+#until loop
+$y = 0;
+until ($y>5){
+    print "Value of y: ".$y."\n";
+    $y++;
+}

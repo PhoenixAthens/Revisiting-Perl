@@ -207,3 +207,42 @@ $color2 = "Brown";
 $result = ($color2 eq "yellow")?"hell yeah!\n":"Shite!\n";
 print $result;
 ```
+
+## Loops
+Perl supports do...while, while, for, foreach, and until loops to execute code repeatedly.
+
+The syntax of `do...while`, `while`, and `for` loop is similar to that in `C`
+
+The `foreach` statement is similar to the for statement, as both are the iterative statements. However, the `foreach` statement lacks an iteration index and works even with collections that lack indices altogether.
+```perl
+@items = ('corn','muesli','hotdog','mustard','wheat');
+foreach $item(@items){
+    print $item."\n";
+}
+```
+
+We can also use the `foreach` loop without the loop-variable, like so
+```perl
+@items = ('corn','muesli','hotdog','mustard','wheat');
+foreach (@items){
+    print "$_\n";
+}
+```
+Here, we are accessing the items from the array using `$_`
+
+### Until loop
+`Until` loop is unlike other loop-constructs, such that it executed until the condition within parens is false. 
+```perl
+$y = 0;
+until ($y>5){
+    print "Value of y: ".$y."\n";
+    $y++;
+}
+# Value of y: 0
+# Value of y: 1
+# Value of y: 2
+# Value of y: 3
+# Value of y: 4
+# Value of y: 5
+```
+The above loop will execute `until` the condition `$y>5` remains `false`, once it returns `true`, the loop will terminate.
