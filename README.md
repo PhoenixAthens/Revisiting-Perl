@@ -246,3 +246,83 @@ until ($y>5){
 # Value of y: 5
 ```
 The above loop will execute `until` the condition `$y>5` remains `false`, once it returns `true`, the loop will terminate.
+
+## Subroutines
+In Perl functions are referred to as subroutines, they need to be declared before they are called otherwise we get a `runtime error`. They are defined with the keyword `sub` in perl.
+
+### Variable Scoper
+In Perl, we have two types of variables, `global` and `local`, `local` variables are declared with the keyword `my`. Using `my` we can use the same variable name in global and local scope, but they won't interfere with each other.
+```perl
+$number = 20;   # if my is not used then its scope is global
+
+sub foo{
+  my $number = 10;  # using my keyword for local variable
+  print "Local Variable value" .$number . "\n";
+}
+foo(); #Will print 10 because text defined inside function is a local variable
+
+print "global Variable value " . $number . "\n";
+```
+
+But if we want modify a global variable within a subroutine, we need to use the `＄::` keyword. This is done by placing the `$::` keyword in front of the variable.
+
+```perl
+$num1 = 5;  # global variables
+$num2 = 2;
+
+sub multiply(){
+  $::num1 = 10;
+  $::num2 = 20;
+  return  $num1 * $num2;
+}
+
+# When in the global scope, regular global variables can be used
+# without explicitly stating '$::variablename'
+print multiply();
+print "num1 is: $num1\n"; #10
+print "num2 is: $num2\n"; #20
+```
+However, if we move the call to `multiply()` after our `print` statements, `num1` and `num2` will be printed as `5`, and `2` respectively
+
+Example of a subroutine in perl
+```perl
+sub sum{
+    return @_[0]+@_[1];
+}
+print sum(1,2)." "; #3
+```
+
+### Params to a subroutine
+Parameters are passed in the subroutines. They are used to hold values during runtime of a subroutine. A user can pass multiple parameters into a subroutine, we can get them by using `@_[0]` for the first parameter and `@_[1]` for the second parameter and `@_[2]` for the third parameter.
+
+```perl
+#subroutine with two parameters
+sub mySubroutine{
+    $num1 = @_[0];
+    $num2 = @_[1];
+    
+    print  "The value assigned to num1 is $num1\n";
+    print  "The value assigned to num2 is $num2";
+}
+#calling subroutine and passing arguments to it
+mySubroutine(3,4);
+```
+
+Perl allows us to pass arguments into a subroutine in two ways:
+- Pass by Value
+- Pass by Reference
+
+On passing `arguments by value`, the value of the argument may change within a subroutine, but the original value outside the subroutine remains unchanged. That means a duplicate of the original value is passed as an argument.
+
+Example of `pass-by-value`
+```perl
+sub cube {    
+  my $num1 = @_[0];     #num1 parameter passed by value here
+  return $num1 * $num1 * $num1; #cube of num1 returned
+} 
+
+$answer = cube(3); #function cube called with 3 passed as the argument 
+print $answer ;
+```
+
+When passing `arguments by reference`, the original value is passed. Therefore, the original value gets altered. In pass by reference, we actually pass the value and access them using ＄_[index] where the index is the variable sequence passed. It tells the compiler that the data is a reference to the value rather than simply the value itself.

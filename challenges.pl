@@ -71,3 +71,13 @@ Here's a breakdown:
 
 In summary, this line effectively "trims" any spaces, tabs, or newlines from the rightmost side of the `$ans` string.
 =cut
+
+# printing pyramid
+$lines = 5;
+$toPrint = 'a';
+for($i=0;$i<$lines;$i++){
+    for($j=0;$j<=$i;$j++){
+        print $toPrint." ";
+    }
+    print "\n";
+}

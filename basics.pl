@@ -124,3 +124,8 @@ until ($y>5){
     print "Value of y: ".$y."\n";
     $y++;
 }
+
+sub sum{
+    return @_[0]+@_[1];
+}
+print sum(1,2)." "; #3
